@@ -2,7 +2,6 @@
 
 This is a front-end test project build based on the instructions on repo: https://github.com/belezanaweb/test-front/
 
-
 ## Getting Started
 
 First, install the dependencies needed to run this project:
@@ -16,7 +15,6 @@ As this project is built using Yarn workspaces' architecture, there is a list be
 
 ## Shopping Cart
 
-
 ```bash
-yarn start:cart
+yarn start:shopping
 ```
