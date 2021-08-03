@@ -1,4 +1,6 @@
+/* eslint-disable react/display-name */
 import React, { forwardRef } from "react";
+import { useFormikContext } from "formik";
 import { ButtonBase } from "./ButtonBase";
 
 const ButtonForm = forwardRef(({ disabled, isLoading, ...props }, ref) => {
@@ -8,7 +10,7 @@ const ButtonForm = forwardRef(({ disabled, isLoading, ...props }, ref) => {
     <ButtonBase
       {...props}
       type="submit"
-      ref="ref"
+      ref={ref}
       disabled={disabled || !dirty || !isValid}
     />
   );

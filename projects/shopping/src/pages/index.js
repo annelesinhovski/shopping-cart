@@ -1,14 +1,15 @@
 import React from "react";
 
-import { Layout, Button } from "@boticario/components";
+import {
+  Layout,
+  Button,
+  FormProvider,
+  Form,
+  Input,
+} from "@boticario/components";
 
 function Checkout() {
-  return (
-    <Layout>
-      Página de checkout
-      <Button>Botão</Button>
-    </Layout>
-  );
+  return <Layout>Página de checkout</Layout>;
 }
 
 export default Checkout;

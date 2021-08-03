@@ -4,6 +4,7 @@ export const Button = styled.button`
   width: 100%;
   padding: 17px;
   background: ${({ theme }) => theme.orange};
+  transition: all 0.3s linear;
 
   text-transform: uppercase;
   font-weight: bold;
