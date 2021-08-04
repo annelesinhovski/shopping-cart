@@ -3,6 +3,7 @@ export { Page } from "./src/Page/Page";
 export { PageTitle } from "./src/PageTitle/PageTitle";
 export { Container } from "./src/Container/Container";
 export { Wrapper } from "./src/Wrapper/Wrapper";
+export { Loading } from "./src/Loading/Loading";
 
 export { Well } from "./src/Well/Well";
 export { Text } from "./src/Well/Text/Text";

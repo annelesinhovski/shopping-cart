@@ -12,6 +12,7 @@ import {
   ProductList,
   SummaryList,
   Notice,
+  Loading,
 } from "@boticario/components";
 
 import { Chart } from "@boticario/services";
@@ -46,7 +47,7 @@ function Confirmation() {
   };
 
   if (!chart) {
-    return "loading";
+    return <Loading />;
   }
 
   return (

@@ -12,6 +12,7 @@ import {
   Card,
   SummaryList,
   H1,
+  Loading,
 } from "@boticario/components";
 
 import { Chart } from "@boticario/services";
@@ -34,7 +35,7 @@ function Payment() {
   }, []);
 
   if (!chart) {
-    return "loading";
+    return <Loading />;
   }
 
   return (

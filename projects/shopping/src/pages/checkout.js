@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import {
+  Loading,
   Page,
   Wrapper,
   Navigation,
@@ -44,7 +45,7 @@ function Checkout() {
   };
 
   if (!chart) {
-    return "loading";
+    return <Loading />;
   }
 
   return (
