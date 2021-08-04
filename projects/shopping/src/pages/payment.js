@@ -1,17 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { Page, Button, FormProvider, Form, Input } from "@boticario/components";
+import {
+  Page,
+  Wrapper,
+  Button,
+  FormProvider,
+  Form,
+  Input,
+  Navigation,
+  Well,
+  Card,
+  SummaryList,
+  H1,
+} from "@boticario/components";
+
+import { Chart } from "@boticario/services";
 
 function Payment() {
+  const [chart, setChart] = useState(null);
+
+  const fetchChart = async () => {
+    try {
+      const response = await Chart.getChart();
+      console.log(response);
+      setChart(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchChart();
+  }, []);
+
+  if (!chart) {
+    return "loading";
+  }
+
   return (
-    <Page>
-      Página de checkout
-      <FormProvider>
-        <Form>
-          <Input label="teste" placeholder="teste" />
-        </Form>
-        <Button.Form>Botão</Button.Form>
-      </FormProvider>
+    <Page title="Pagamento - O Boticário">
+      <Navigation
+        nav={[
+          {
+            text: <>SACOLA</>,
+          },
+          { active: true, text: <>PAGAMENTO</> },
+          {
+            text: <>CONFIRMAÇÃO</>,
+          },
+        ]}
+      />
+      <Wrapper>
+        <Well>
+          <H1>CARTÃO DE CRÉDITO</H1>
+        </Well>
+        <FormProvider>
+          <Card themeWhite>
+            <Form>
+              <Input
+                label="Número do cartão:"
+                placeholder="____.____.____.____"
+              />
+              <Input label="Nome do Titular:" placeholder="Como no cartão" />
+              <Input label="Validade (mês/ano):" placeholder="__/____" />
+              <Input label="CVV:" placeholder="___" />
+            </Form>
+          </Card>
+
+          <Card>
+            <SummaryList priceValue={chart} />
+          </Card>
+
+          <Button>fINALIZAR O PEDIDO</Button>
+        </FormProvider>
+      </Wrapper>
     </Page>
   );
 }

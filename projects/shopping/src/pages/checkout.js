@@ -47,8 +47,6 @@ function Payment() {
     return "loading";
   }
 
-  const { total, subTotal, discount, shippingTotal } = chart;
-
   return (
     <Page title="Sacola - O Boticário">
       <Navigation

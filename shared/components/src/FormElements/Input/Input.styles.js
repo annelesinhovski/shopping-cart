@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const InputWrapper = styled.div`
-  margin: 5px 0;
+  margin: 10px 0 15px;
 `;
 
 export const InputBase = styled.input`
   width: 94%;
   padding: 14px 3%;
-  border: 1px solid #787878;
+  border: 1px solid #e7e7e7;
   color: ${({ theme }) => theme.black};
   font-size: 16px;
   border-radius: 3px;
   outline: none;
+  box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.22);
   &:focus,
   &:focus-visible {
     border-radius: 3px;
