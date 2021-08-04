@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   width: 100%;
-  padding: 17px;
+  padding: 17px 0;
   background: ${({ theme }) => theme.orange};
   transition: all 0.3s linear;
 

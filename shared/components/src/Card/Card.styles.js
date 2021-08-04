@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const CardBody = styled.div`
   padding: 10px;
-  margin: 10px 0;
-  background: #ffffff;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 29, 0.22);
+  margin: 5px 0 20px;
+  background: ${(x) => (x.themeWhite ? "#FFFFFF" : "none")};
+  box-shadow: ${(x) =>
+    x.themeWhite ? "0px 2px 5px 0px rgba(0, 0, 29, 0.22)" : "none"};
+  border: ${(x) => (x.themeWhite ? "none" : "1px solid #CCCCCC")};
   border-radius: 3px;
 `;
 

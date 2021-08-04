@@ -2,9 +2,9 @@ import React from "react";
 
 import { CardBody, List, Item } from "./Card.styles.js";
 
-const Card = ({ items = [], children, ...props }) => {
+const Card = ({ themeWhite, items = [], children, ...props }) => {
   return (
-    <CardBody {...props}>
+    <CardBody themeWhite={themeWhite} {...props}>
       {items.length ? (
         <List>
           {items.map((item, i) => (

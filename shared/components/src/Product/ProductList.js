@@ -1,23 +1,22 @@
 import React from "react";
 
+import { Products, Product } from "./Product.styles";
 import { ProductBase } from "./ProductBase";
 
 function ProductList({ products = [] }) {
-  // debugger;
-
   return (
-    <ul>
+    <Products>
       {products.map((item, i) => (
-        <li key={item + i}>
+        <Product key={item + i}>
           <ProductBase
             text={item.text}
             src={item.src}
             alt={item.text}
             price={item.price}
           />
-        </li>
+        </Product>
       ))}
-    </ul>
+    </Products>
   );
 }
 

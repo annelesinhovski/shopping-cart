@@ -2,10 +2,11 @@ export { Layout } from "./src/Layout/Layout";
 export { Page } from "./src/Page/Page";
 export { PageTitle } from "./src/PageTitle/PageTitle";
 export { Container } from "./src/Container/Container";
+export { Wrapper } from "./src/Wrapper/Wrapper";
 
 export { Well } from "./src/Well/Well";
 export { Text } from "./src/Well/Text/Text";
-export { Title } from "./src/Well/Title/Title";
+export { H1 } from "./src/Well/Title/Title";
 
 export { Form } from "./src/FormElements/Form/Form";
 export { FormProvider } from "./src/FormElements/Form/FormProvider";
@@ -17,3 +18,5 @@ export { Card } from "./src/Card/Card";
 
 export { ProductList } from "./src/Product/ProductList";
 export { ProductBase } from "./src/Product/ProductBase";
+
+export { SummaryList } from "./src/SummaryList/SummaryList";
