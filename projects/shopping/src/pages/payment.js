@@ -1,16 +1,10 @@
 import React from "react";
 
-import {
-  Layout,
-  Button,
-  FormProvider,
-  Form,
-  Input,
-} from "@boticario/components";
+import { Page, Button, FormProvider, Form, Input } from "@boticario/components";
 
-function Checkout() {
+function Payment() {
   return (
-    <Layout>
+    <Page>
       Página de checkout
       <FormProvider>
         <Form>
@@ -18,8 +12,8 @@ function Checkout() {
         </Form>
         <Button.Form>Botão</Button.Form>
       </FormProvider>
-    </Layout>
+    </Page>
   );
 }
 
-export default Checkout;
+export default Payment;

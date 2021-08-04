@@ -1,15 +1,14 @@
-import React from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-import {
-  Layout,
-  Button,
-  FormProvider,
-  Form,
-  Input,
-} from "@boticario/components";
+const ENTRY_PAGE = "/checkout";
 
-function Checkout() {
-  return <Layout>Página de checkout</Layout>;
-}
+export default () => {
+  const router = useRouter();
 
-export default Checkout;
+  useEffect(() => {
+    router.push(ENTRY_PAGE);
+  }, []);
+
+  return null;
+};
