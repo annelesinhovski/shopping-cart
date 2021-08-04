@@ -1,5 +1,7 @@
-import React from "react";
+import styled from "styled-components";
 
-const Text = ({ ...props }) => <p {...props} />;
-
-export { Text };
+export const Text = styled.p`
+  margin: 5px 0;
+  font-size: 14px;
+  color: ${({ theme }) => theme.black};
+`;

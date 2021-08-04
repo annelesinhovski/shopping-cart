@@ -6,7 +6,7 @@ export { Wrapper } from "./src/Wrapper/Wrapper";
 
 export { Well } from "./src/Well/Well";
 export { Text } from "./src/Well/Text/Text";
-export { H1 } from "./src/Well/Title/Title";
+export { H1, H2 } from "./src/Well/Title/Title";
 
 export { Form } from "./src/FormElements/Form/Form";
 export { FormProvider } from "./src/FormElements/Form/FormProvider";
@@ -20,3 +20,4 @@ export { ProductList } from "./src/Product/ProductList";
 export { ProductBase } from "./src/Product/ProductBase";
 
 export { SummaryList } from "./src/SummaryList/SummaryList";
+export { Notice } from "./src/Notice/Notice";

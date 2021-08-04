@@ -7,15 +7,17 @@ import {
   Card,
   Well,
   H1,
+  H2,
+  Text,
   ProductList,
-  Button,
   SummaryList,
+  Notice,
 } from "@boticario/components";
 
 import { Chart } from "@boticario/services";
 import { normalizeMoneyValue } from "@boticario/utils";
 
-function Checkout() {
+function Confirmation() {
   const [chart, setChart] = useState(null);
 
   const fetchChart = async () => {
@@ -48,24 +50,33 @@ function Checkout() {
   }
 
   return (
-    <Page title="Sacola - O Boticário">
+    <Page title="Confirmação - O Boticário">
       <Navigation
         nav={[
           {
-            active: true,
             text: <>SACOLA</>,
           },
           {
             text: <>PAGAMENTO</>,
           },
-          {
-            text: <>CONFIRMAÇÃO</>,
-          },
+          { active: true, text: <>CONFIRMAÇÃO</> },
         ]}
       />
       <Wrapper>
+        <Notice
+          text="Compra efetuada com sucesso"
+          icon="/images/icons/success.png"
+        />
         <Well>
-          <H1>PRODUTOS</H1>
+          <H1>PAGAMENTO</H1>
+        </Well>
+        <Card themeWhite>
+          <Text>dados cartão</Text>
+          <Text>dados cartão</Text>
+          <Text>dados cartão</Text>
+        </Card>
+        <Well>
+          <H2>PRODUTOS</H2>
         </Well>
         <Card themeWhite>
           <ProductList products={[...mapperProducts(chart)]} />
@@ -74,11 +85,9 @@ function Checkout() {
         <Card>
           <SummaryList priceValue={chart} />
         </Card>
-
-        <Button>Seguir para o pagamento</Button>
       </Wrapper>
     </Page>
   );
 }
 
-export default Checkout;
+export default Confirmation;
