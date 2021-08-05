@@ -20,7 +20,7 @@ yarn
 After that, you can run the project you want to see running locally.
 As this project is built using Yarn workspaces' architecture, there is a list bellow with all the projects in this repository and its running command.
 
-### Shopping Cart
+**Shopping Cart**
 
 ```bash
 yarn start:shopping
