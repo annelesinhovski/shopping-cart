@@ -2,6 +2,9 @@
   "name": "@shoppingcart/components",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "test": "jest --no-cache-once --env=jsdom"
+  },
   "dependencies": {
     "next": "^11.0.1",
     "react": "^17.0.2",
@@ -11,7 +14,11 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.9",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "babel-jest": "^27.0.6",
     "formik": "^2.2.9",
+    "jest": "^27.0.6",
     "react-text-mask": "^5.4.3"
   }
 }

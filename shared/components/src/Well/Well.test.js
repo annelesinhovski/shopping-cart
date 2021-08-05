@@ -9,12 +9,4 @@ describe('Well', () => {
 
     expect(screen.getByText('Teste'));
   });
-
-  test('Renders component align center', () => {
-    render(<Well align="center">Teste</Well>);
-
-    const well = screen.getByText('Teste');
-
-    expect(well).toHaveStyle('align-items: center');
-  });
 });

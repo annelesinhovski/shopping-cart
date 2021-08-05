@@ -9,6 +9,9 @@
   "author": "Anne Lesinhovski",
   "scripts": {
     "start:shopping": "yarn workspace @shoppingcart/shopping dev",
+    "test": "jest",
+    "update:snapshots": "jest -u",
+    "coverage": "jest --coverage",
     "lint": "yarn workspaces run lint --fix"
   },
   "dependencies": {
@@ -16,6 +19,8 @@
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "11.0.1"
+    "eslint-config-next": "11.0.1",
+    "jest": "^27.0.6",
+    "jest-mock-axios": "^4.4.0"
   }
 }
