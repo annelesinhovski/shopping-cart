@@ -1,6 +1,6 @@
-const withTM = require("next-transpile-modules")([
-  "@boticario/components",
-  "@boticario/utils",
+const withTM = require('next-transpile-modules')([
+  '@shoppingcart/components',
+  '@shoppingcart/utils',
 ]);
 
 module.exports = withTM({

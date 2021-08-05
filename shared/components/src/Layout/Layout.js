@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { ThemeProvider } from "styled-components";
-import { theme } from "@boticario/utils";
+import { ThemeProvider } from 'styled-components';
+import { theme } from '@shoppingcart/utils';
 
-import { Wrapper, Container } from "../Layout/Layout.styles";
+import { Wrapper, Container } from '../Layout/Layout.styles';
 
 export const Layout = (props) => {
   return (

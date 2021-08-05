@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { normalizeMoneyValue } from "@boticario/utils";
+import { normalizeMoneyValue } from '@shoppingcart/utils';
 
-import { ListPrices, PriceItem } from "./SummaryList.styles";
+import { ListPrices, PriceItem } from './SummaryList.styles';
 
 function SummaryList({ priceValue }) {
   return (

@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { useRouter } from "next/router";
+import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 
 import {
   Page,
@@ -15,10 +15,10 @@ import {
   SummaryList,
   H1,
   Loading,
-} from "@boticario/components";
+} from '@shoppingcart/components';
 
-import { validations } from "@boticario/utils";
-import { PaymentContext } from "../stores/PaymentStore";
+import { validations } from '@shoppingcart/utils';
+import { PaymentContext } from '../stores/PaymentStore';
 
 function Payment() {
   const router = useRouter();
@@ -26,7 +26,7 @@ function Payment() {
 
   const handleSubmit = (data) => {
     context.dispatch.userData(data);
-    router.push("/confirmation");
+    router.push('/confirmation');
   };
 
   if (!context.state.payment) {
@@ -38,14 +38,14 @@ function Payment() {
       <Navigation
         nav={[
           {
-            text: "SACOLA",
+            text: 'SACOLA',
           },
           {
             active: true,
-            text: "PAGAMENTO",
+            text: 'PAGAMENTO',
           },
           {
-            text: "CONFIRMAÇÃO",
+            text: 'CONFIRMAÇÃO',
           },
         ]}
       />
@@ -55,7 +55,7 @@ function Payment() {
         </Well>
         <FormProvider
           validationSchema={validations.paymentSchema}
-          initialValues={{ card: "", dateValidate: "", cvv: "", fullName: "" }}
+          initialValues={{ card: '', dateValidate: '', cvv: '', fullName: '' }}
           onSubmit={handleSubmit}
         >
           <Card themeWhite>
@@ -106,23 +106,23 @@ const CARD_MASK = [
   /\d/,
   /\d/,
   /\d/,
-  " ",
+  ' ',
   /\d/,
   /\d/,
   /\d/,
   /\d/,
-  " ",
+  ' ',
   /\d/,
   /\d/,
   /\d/,
   /\d/,
-  " ",
+  ' ',
   /\d/,
   /\d/,
   /\d/,
   /\d/,
 ];
 
-const DATE_MASK = [/\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/];
+const DATE_MASK = [/\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
 
 const CVV_MASK = [/\d/, /\d/, /\d/];

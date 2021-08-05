@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
 import {
   Page,
@@ -13,9 +13,9 @@ import {
   SummaryList,
   Notice,
   Loading,
-} from "@boticario/components";
+} from '@shoppingcart/components';
 
-import { PaymentContext } from "../stores/PaymentStore";
+import { PaymentContext } from '../stores/PaymentStore';
 
 function Confirmation() {
   const context = useContext(PaymentContext);
@@ -25,11 +25,11 @@ function Confirmation() {
   }
 
   const maskCreditCard = (card) => {
-    const [p1, p2, p3, p4] = card.split(" ");
+    const [p1, p2, p3, p4] = card.split(' ');
 
-    const mask = (part) => part.replace(/\d/g, "*");
+    const mask = (part) => part.replace(/\d/g, '*');
 
-    return [mask(p1), mask(p2), mask(p3), p4].join(" ");
+    return [mask(p1), mask(p2), mask(p3), p4].join(' ');
   };
 
   return (
@@ -37,14 +37,14 @@ function Confirmation() {
       <Navigation
         nav={[
           {
-            text: "SACOLA",
+            text: 'SACOLA',
           },
           {
-            text: "PAGAMENTO",
+            text: 'PAGAMENTO',
           },
           {
             active: true,
-            text: "CONFIRMAÇÃO",
+            text: 'CONFIRMAÇÃO',
           },
         ]}
       />

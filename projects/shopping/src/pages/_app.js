@@ -1,9 +1,9 @@
-import React from "react";
-import App from "next/app";
-import { theme } from "@boticario/utils";
-import { Layout } from "@boticario/components";
-import { PaymentStore } from "../stores/PaymentStore";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import App from 'next/app';
+import { theme } from '@shoppingcart/utils';
+import { Layout } from '@shoppingcart/components';
+import { PaymentStore } from '../stores/PaymentStore';
+import { ThemeProvider } from 'styled-components';
 
 class MyApp extends App {
   render() {

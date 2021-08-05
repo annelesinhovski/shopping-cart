@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import { Formik } from "formik";
-import { defaultSchema } from "@boticario/utils";
+import React, { Fragment } from 'react';
+import { Formik } from 'formik';
+import { defaultSchema } from '@shoppingcart/utils';
 
 const FormProvider = ({ validationSchema, onSubmit, children, ...props }) => {
   const handlerSubmit = (values, actions) => {

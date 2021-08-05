@@ -1,5 +1,5 @@
 {
-  "name": "teste-boticario",
+  "name": "shopping-cart",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
@@ -8,7 +8,7 @@
   ],
   "author": "Anne Lesinhovski",
   "scripts": {
-    "start:shopping": "yarn workspace @boticario/shopping dev",
+    "start:shopping": "yarn workspace @shoppingcart/shopping dev",
     "lint": "yarn workspaces run lint --fix"
   },
   "dependencies": {

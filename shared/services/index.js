@@ -1,1 +1,1 @@
-export * as Chart from "./src/Chart";
+export * as Cart from './src/Cart';

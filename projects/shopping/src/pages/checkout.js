@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import {
   Loading,
@@ -12,19 +12,19 @@ import {
   ProductList,
   Button,
   SummaryList,
-} from "@boticario/components";
+} from '@shoppingcart/components';
 
-import { Chart } from "@boticario/services";
-import { normalizeMoneyValue } from "@boticario/utils";
-import { PaymentContext } from "../stores/PaymentStore";
+import { Cart } from '@shoppingcart/services';
+import { normalizeMoneyValue } from '@shoppingcart/utils';
+import { PaymentContext } from '../stores/PaymentStore';
 
 function Checkout() {
   const router = useRouter();
   const context = useContext(PaymentContext);
 
-  const fetchChart = async () => {
+  const fetchCart = async () => {
     try {
-      const response = await Chart.getChart();
+      const response = await Cart.getCart();
       const { items, ...rest } = response.data;
 
       context.dispatch.payment({ items: mapperProducts({ items }), ...rest });
@@ -34,7 +34,7 @@ function Checkout() {
   };
 
   useEffect(() => {
-    fetchChart();
+    fetchCart();
   }, []);
 
   const mapperProducts = ({ items }) => {
@@ -58,13 +58,13 @@ function Checkout() {
         nav={[
           {
             active: true,
-            text: "SACOLA",
+            text: 'SACOLA',
           },
           {
-            text: "PAGAMENTO",
+            text: 'PAGAMENTO',
           },
           {
-            text: "CONFIRMAÇÃO",
+            text: 'CONFIRMAÇÃO',
           },
         ]}
       />
@@ -80,7 +80,7 @@ function Checkout() {
           <SummaryList priceValue={context.state.payment} />
         </Card>
 
-        <Button onClick={() => router.push("/payment")}>
+        <Button onClick={() => router.push('/payment')}>
           Seguir para o pagamento
         </Button>
       </Wrapper>
