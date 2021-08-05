@@ -20,4 +20,11 @@ export const Button = styled.button`
     background: ${({ theme }) => theme.darkOrange};
     border-bottom: 3px solid ${({ theme }) => theme.darkOrange};
   }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    background: ${({ theme }) => theme.lightGray};
+    border-bottom: 3px solid ${({ theme }) => theme.gray};
+  }
 `;

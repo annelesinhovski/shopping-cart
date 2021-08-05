@@ -19,26 +19,15 @@ export const Layout = (props) => {
             background: #eeeeee;
           }
 
-          ::-webkit-input-placeholder {
-            /* Edge */
-            color: #e0e7ee;
-          }
-
-          :-ms-input-placeholder {
-            /* Internet Explorer 10-11 */
-            color: #e0e7ee;
-          }
-
           ::placeholder {
             color: #e0e7ee;
           }
         `}
       </style>
-      <ThemeProvider theme={theme}>
-        <Wrapper>
-          <Container {...props} />
-        </Wrapper>
-      </ThemeProvider>
+
+      <Wrapper>
+        <Container {...props} />
+      </Wrapper>
     </>
   );
 };

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import {
   Loading,
@@ -15,15 +16,18 @@ import {
 
 import { Chart } from "@boticario/services";
 import { normalizeMoneyValue } from "@boticario/utils";
+import { PaymentContext } from "../stores/PaymentStore";
 
 function Checkout() {
-  const [chart, setChart] = useState(null);
+  const router = useRouter();
+  const context = useContext(PaymentContext);
 
   const fetchChart = async () => {
     try {
       const response = await Chart.getChart();
-      console.log(response);
-      setChart(response.data);
+      const { items, ...rest } = response.data;
+
+      context.dispatch.payment({ items: mapperProducts({ items }), ...rest });
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +48,7 @@ function Checkout() {
     });
   };
 
-  if (!chart) {
+  if (!context.state.payment) {
     return <Loading />;
   }
 
@@ -54,13 +58,13 @@ function Checkout() {
         nav={[
           {
             active: true,
-            text: <>SACOLA</>,
+            text: "SACOLA",
           },
           {
-            text: <>PAGAMENTO</>,
+            text: "PAGAMENTO",
           },
           {
-            text: <>CONFIRMAÇÃO</>,
+            text: "CONFIRMAÇÃO",
           },
         ]}
       />
@@ -69,14 +73,16 @@ function Checkout() {
           <H1>PRODUTOS</H1>
         </Well>
         <Card themeWhite>
-          <ProductList products={[...mapperProducts(chart)]} />
+          <ProductList products={context.state.payment.items} />
         </Card>
 
         <Card>
-          <SummaryList priceValue={chart} />
+          <SummaryList priceValue={context.state.payment} />
         </Card>
 
-        <Button>Seguir para o pagamento</Button>
+        <Button onClick={() => router.push("/payment")}>
+          Seguir para o pagamento
+        </Button>
       </Wrapper>
     </Page>
   );

@@ -1,11 +1,12 @@
 import React from "react";
+import Link from "next/link";
 
 import { Menu, MenuItem } from "./Navigation.styles";
 
 function Navigation({ nav = [] }) {
   const navItens = nav.map((nav, i) => (
     <MenuItem key={nav + i}>
-      <ItemNav text={nav.text} active={nav.active} />
+      <ItemNav {...nav} />
     </MenuItem>
   ));
 

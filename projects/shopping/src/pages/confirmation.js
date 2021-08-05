@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 import {
   Page,
@@ -15,52 +15,37 @@ import {
   Loading,
 } from "@boticario/components";
 
-import { Chart } from "@boticario/services";
-import { normalizeMoneyValue } from "@boticario/utils";
+import { PaymentContext } from "../stores/PaymentStore";
 
 function Confirmation() {
-  const [chart, setChart] = useState(null);
+  const context = useContext(PaymentContext);
 
-  const fetchChart = async () => {
-    try {
-      const response = await Chart.getChart();
-      console.log(response);
-      setChart(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchChart();
-  }, []);
-
-  const mapperProducts = ({ items }) => {
-    return items.map((item) => {
-      const { name: text, priceSpecification, imageObjects } = item.product;
-      return {
-        text,
-        price: normalizeMoneyValue(priceSpecification.price),
-        src: imageObjects[0].thumbnail,
-      };
-    });
-  };
-
-  if (!chart) {
+  if (!context.state.payment) {
     return <Loading />;
   }
+
+  const maskCreditCard = (card) => {
+    const [p1, p2, p3, p4] = card.split(" ");
+
+    const mask = (part) => part.replace(/\d/g, "*");
+
+    return [mask(p1), mask(p2), mask(p3), p4].join(" ");
+  };
 
   return (
     <Page title="Confirmação - O Boticário">
       <Navigation
         nav={[
           {
-            text: <>SACOLA</>,
+            text: "SACOLA",
           },
           {
-            text: <>PAGAMENTO</>,
+            text: "PAGAMENTO",
           },
-          { active: true, text: <>CONFIRMAÇÃO</> },
+          {
+            active: true,
+            text: "CONFIRMAÇÃO",
+          },
         ]}
       />
       <Wrapper>
@@ -72,19 +57,19 @@ function Confirmation() {
           <H1>PAGAMENTO</H1>
         </Well>
         <Card themeWhite>
-          <Text>dados cartão</Text>
-          <Text>dados cartão</Text>
-          <Text>dados cartão</Text>
+          <Text>{maskCreditCard(context.state.userData.card)}</Text>
+          <Text>{context.state.userData.fullName.toUpperCase()}</Text>
+          <Text>{context.state.userData.dateValidate}</Text>
         </Card>
         <Well>
           <H2>PRODUTOS</H2>
         </Well>
         <Card themeWhite>
-          <ProductList products={[...mapperProducts(chart)]} />
+          <ProductList products={context.state.payment.items} />
         </Card>
 
         <Card>
-          <SummaryList priceValue={chart} />
+          <SummaryList priceValue={context.state.payment} />
         </Card>
       </Wrapper>
     </Page>

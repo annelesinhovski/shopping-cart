@@ -3,10 +3,10 @@ import React, { forwardRef } from "react";
 import { useField } from "formik";
 import MaskedInput from "react-text-mask";
 
-import { InputWrapper, InputBase, Label } from "./Input.styles";
+import { InputWrapper, InputBase, Label, ErrorMessage } from "./Input.styles";
 
 const Input = forwardRef(
-  ({ label, mask, onChange, onBlur, onFocus, ...props }, ref) => {
+  ({ label, error, mask, onChange, onBlur, onFocus, ...props }, ref) => {
     const [field, meta] = useField(props);
 
     const onFocusInterceptor = (event) => {
@@ -43,14 +43,15 @@ const Input = forwardRef(
       return {};
     };
 
+    const displayError =
+      typeof meta.error === "string" && meta.error && meta.touched;
+
     return (
       <InputWrapper>
         {label && <Label>{label}</Label>}
 
         <InputBase
-          variant={
-            typeof meta.error === "string" && meta.touched ? "error" : "default"
-          }
+          variant={displayError ? "error" : "default"}
           value={meta.value}
           onFocus={onFocusInterceptor}
           onChange={onChangeInterceptor}
@@ -59,6 +60,8 @@ const Input = forwardRef(
           {...inputMask()}
           {...props}
         />
+
+        {displayError && <ErrorMessage>{meta.error}</ErrorMessage>}
       </InputWrapper>
     );
   }

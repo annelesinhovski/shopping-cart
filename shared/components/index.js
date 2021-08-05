@@ -12,6 +12,7 @@ export { H1, H2 } from "./src/Well/Title/Title";
 export { Form } from "./src/FormElements/Form/Form";
 export { FormProvider } from "./src/FormElements/Form/FormProvider";
 export { Input } from "./src/FormElements/Input/Input";
+export { Date } from "./src/FormElements/Date/Date";
 
 export { Button } from "./src/Button";
 export { Navigation } from "./src/Navigation/Navigation";

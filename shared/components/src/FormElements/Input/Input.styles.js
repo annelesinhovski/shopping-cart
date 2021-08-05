@@ -7,7 +7,7 @@ export const InputWrapper = styled.div`
 export const InputBase = styled.input`
   width: 94%;
   padding: 14px 3%;
-  border: 1px solid #e7e7e7;
+  border: 1px solid ${(x) => (x.variant === "error" ? "red" : "#e7e7e7")};
   color: ${({ theme }) => theme.black};
   font-size: 16px;
   border-radius: 3px;
@@ -25,4 +25,11 @@ export const Label = styled.span`
   display: block;
   font-size: 12px;
   color: ${({ theme }) => theme.lightGray};
+`;
+
+export const ErrorMessage = styled.span`
+  line-height: 150%;
+  display: block;
+  font-size: 12px;
+  color: #f30;
 `;

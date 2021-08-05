@@ -12,7 +12,7 @@ export const Menu = styled.ul`
 
 export const MenuItem = styled.li`
   list-style: none;
-  span {
+  & > span {
     font-size: 13px;
     font-weight: bold;
     color: ${({ theme }) => theme.lightGray};

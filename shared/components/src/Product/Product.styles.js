@@ -20,6 +20,9 @@ export const Tile = styled.figure`
   border-radius: 3px;
   display: flex;
   align-items: center;
+  & > figcaption {
+    width: 100%;
+  }
 `;
 
 export const Image = styled.img`

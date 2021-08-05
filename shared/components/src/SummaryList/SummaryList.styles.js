@@ -8,7 +8,7 @@ export const ListPrices = styled.ul`
 export const PriceItem = styled.li`
   list-style: none;
   font-size: 14px;
-  div {
+  & > div {
     display: flex;
     justify-content: space-between;
     margin: 6px 0;

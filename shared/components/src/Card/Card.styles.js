@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardBody = styled.div`
-  padding: 10px;
+  padding: 10px 12px;
   margin: 5px 0 20px;
   background: ${(x) => (x.themeWhite ? "#FFFFFF" : "none")};
   box-shadow: ${(x) =>

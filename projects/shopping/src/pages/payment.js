@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { useRouter } from "next/router";
 
 import {
   Page,
@@ -7,6 +8,7 @@ import {
   FormProvider,
   Form,
   Input,
+  Date,
   Navigation,
   Well,
   Card,
@@ -15,26 +17,19 @@ import {
   Loading,
 } from "@boticario/components";
 
-import { Chart } from "@boticario/services";
+import { validations } from "@boticario/utils";
+import { PaymentContext } from "../stores/PaymentStore";
 
 function Payment() {
-  const [chart, setChart] = useState(null);
+  const router = useRouter();
+  const context = useContext(PaymentContext);
 
-  const fetchChart = async () => {
-    try {
-      const response = await Chart.getChart();
-      console.log(response);
-      setChart(response.data);
-    } catch (err) {
-      console.log(err);
-    }
+  const handleSubmit = (data) => {
+    context.dispatch.userData(data);
+    router.push("/confirmation");
   };
 
-  useEffect(() => {
-    fetchChart();
-  }, []);
-
-  if (!chart) {
+  if (!context.state.payment) {
     return <Loading />;
   }
 
@@ -43,11 +38,14 @@ function Payment() {
       <Navigation
         nav={[
           {
-            text: <>SACOLA</>,
+            text: "SACOLA",
           },
-          { active: true, text: <>PAGAMENTO</> },
           {
-            text: <>CONFIRMAÇÃO</>,
+            active: true,
+            text: "PAGAMENTO",
+          },
+          {
+            text: "CONFIRMAÇÃO",
           },
         ]}
       />
@@ -55,24 +53,46 @@ function Payment() {
         <Well>
           <H1>CARTÃO DE CRÉDITO</H1>
         </Well>
-        <FormProvider>
+        <FormProvider
+          validationSchema={validations.paymentSchema}
+          initialValues={{ card: "", dateValidate: "", cvv: "", fullName: "" }}
+          onSubmit={handleSubmit}
+        >
           <Card themeWhite>
-            <Form>
+            <Form id="payment-method">
               <Input
                 label="Número do cartão:"
                 placeholder="____.____.____.____"
+                mask={CARD_MASK}
+                name="card"
               />
-              <Input label="Nome do Titular:" placeholder="Como no cartão" />
-              <Input label="Validade (mês/ano):" placeholder="__/____" />
-              <Input label="CVV:" placeholder="___" />
+              <Input
+                label="Nome do Titular:"
+                placeholder="Como no cartão"
+                name="fullName"
+              />
+              <Date>
+                <Input
+                  label="Validade (mês/ano):"
+                  placeholder="__/____"
+                  mask={DATE_MASK}
+                  name="dateValidate"
+                />
+                <Input
+                  label="CVV:"
+                  placeholder="___"
+                  mask={CVV_MASK}
+                  name="cvv"
+                />
+              </Date>
             </Form>
           </Card>
 
           <Card>
-            <SummaryList priceValue={chart} />
+            <SummaryList priceValue={context.state.payment} />
           </Card>
 
-          <Button>fINALIZAR O PEDIDO</Button>
+          <Button.Form form="payment-method">FINALIZAR O PEDIDO</Button.Form>
         </FormProvider>
       </Wrapper>
     </Page>
@@ -80,3 +100,29 @@ function Payment() {
 }
 
 export default Payment;
+
+const CARD_MASK = [
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  " ",
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  " ",
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+  " ",
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+];
+
+const DATE_MASK = [/\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/];
+
+const CVV_MASK = [/\d/, /\d/, /\d/];
