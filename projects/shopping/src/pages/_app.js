@@ -5,7 +5,7 @@ import { Layout } from '@shoppingcart/components';
 import { PaymentStore } from '../stores/PaymentStore';
 import { ThemeProvider } from 'styled-components';
 
-class MyApp extends App {
+export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
@@ -20,5 +20,3 @@ class MyApp extends App {
     );
   }
 }
-
-export default MyApp;

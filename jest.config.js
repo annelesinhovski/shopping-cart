@@ -9,7 +9,7 @@ module.exports = {
     '!**/coverage/**',
     '!**/__mocks__/**',
     '!**/__tests__/**',
-    '!**/__snapshots/**',
+    '!**/__snapshots__/**',
     '!**/*.json',
   ],
 };
