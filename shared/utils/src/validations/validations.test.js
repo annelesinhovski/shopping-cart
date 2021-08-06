@@ -1,6 +1,6 @@
-import { defaultSchema } from "./validations";
+import { defaultSchema, paymentSchema } from './validations';
 
-test("defaultSchema", async () => {
-  expect(await defaultSchema.isValid("")).toBeFalsy();
+test('defaultSchema', async () => {
+  expect(await defaultSchema.isValid('')).toBeFalsy();
   expect(await defaultSchema.isValid({})).toBeTruthy();
 });

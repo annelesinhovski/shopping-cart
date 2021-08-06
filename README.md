@@ -45,3 +45,13 @@ This is a front-end project built using [React](https://pt-br.reactjs.org/) and 
 HTTPs requests were made with [Axios](https://axios-http.com/ptbr/).
 
 Unit tests using [Jest](https://jestjs.io/pt-BR/) and [Testing Library](https://testing-library.com/).
+
+## Points of Improvement
+
+After structuring this project, some points for improvement can be highlighted as TO DOs in the future:
+
+- Increase test coverage (now around 60%).
+
+- More specific field validation rules.
+
+- In the future, each step of the flow from /shopping, could be built as a standalone micro frontend, in a structure like this: /projects/checkout, /projects/payment, /projects/confirmation.

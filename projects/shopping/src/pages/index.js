@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useEffect } from 'react';
+import Router from 'next/router';
 
-const ENTRY_PAGE = "/checkout";
+const ENTRY_PAGE = '/checkout';
 
-export default () => {
-  const router = useRouter();
-
+const Home = () => {
   useEffect(() => {
-    router.push(ENTRY_PAGE);
+    Router.push({ pathname: ENTRY_PAGE });
   }, []);
 
   return null;
 };
+
+export default Home;
